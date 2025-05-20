@@ -1,6 +1,7 @@
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.geometry.Pos;
 
 public class Menu {
@@ -9,6 +10,11 @@ public class Menu {
     private double volume = 0.5;
     private int selectedMap = 0;
 
+    public static final int MENU_WIDTH = 800;
+    public static final int MENU_HEIGHT = 600;
+    public static final int CONFIG_WIDTH = 800;
+    public static final int CONFIG_HEIGHT = 600;
+  
     public Menu(PixelBlast mainApp, int width, int height) {
         this.mainApp = mainApp;
         setupMenu(width, height);
@@ -16,8 +22,7 @@ public class Menu {
     }
 
     private void setupMenu(int width, int height) {
-        VBox menuBox = new VBox(20);
-        menuBox.setAlignment(Pos.CENTER);
+        VBox menuBox = getVBox();
 
         Button playBtn = new Button("Jugar");
         Button configBtn = new Button("Configuración");
@@ -38,6 +43,23 @@ public class Menu {
 
         menuBox.getChildren().addAll(playBtn, mapLabel, mapSelector, configBtn, exitBtn);
         menuScene = new Scene(menuBox, width, height);
+    }
+
+    private static VBox getVBox() {
+        VBox menuBox = new VBox(20);
+        menuBox.setAlignment(Pos.CENTER);
+
+        // Cargar la imagen de fondo
+        Image bgImage = new Image("file:resources/fondo_menu.png");
+        BackgroundImage backgroundImage = new BackgroundImage(
+                bgImage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)
+        );
+        menuBox.setBackground(new Background(backgroundImage));
+        return menuBox;
     }
 
     private void setupConfig(int width, int height) {
