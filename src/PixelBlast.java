@@ -194,6 +194,7 @@ public class PixelBlast extends Application {
                             {1,0,2,0,2,0,2,0,2,0,2,0,2,0,1},
                             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
                     },
+
                     {
                             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                             {1,0,0,2,0,2,0,2,0,2,0,2,0,0,1},
@@ -215,6 +216,10 @@ public class PixelBlast extends Application {
             for (int i = 0; i < rows; i++)
                 for (int j = 0; j < columns; j++)
                     scene[i][j] = maps[selectedMap][i][j];
+
+
+
+
 
             // Limpiar zona inicial
             scene[1][1] = 0;
